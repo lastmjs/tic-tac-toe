@@ -1,4 +1,5 @@
 import {html, render} from 'lit-html/lib/lit-extended.js';
+import {Store} from '../state/store';
 
 class TicTacSquare extends HTMLElement {
     _fill: 'x' | 'o' | '';
@@ -21,7 +22,10 @@ class TicTacSquare extends HTMLElement {
     }
 
     squareClick() {
-        this.dispatchEvent(new CustomEvent('square-click'));
+        Store.dispatch({
+            type: 'SQUARE_CLICK',
+            grid: this.id
+        });
     }
 
     render() {
