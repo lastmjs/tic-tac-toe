@@ -1,0 +1,21 @@
+{
+  "name": "tic-tac-toe",
+  "version": "0.0.0",
+  "description": "Tic tac toe, web component style",
+  "main": "elements/tic-tac-toe.js",
+  "scripts": {
+    "start": "zwitterion",
+    "build-static": "zwitterion --build-static --exclude node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lastmjs/tic-tac-toe.git"
+  },
+  "author": "Jordan Last <jordan.michael.last@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "lit-html": "^0.9.0",
+    "redux": "^4.0.0",
+    "zwitterion": "^0.27.0"
+  }
+}
