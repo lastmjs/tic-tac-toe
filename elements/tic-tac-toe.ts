@@ -1,18 +1,11 @@
-import {html, render} from 'lit-html/lib/lit-extended.js';
+import { html } from 'lit-html';
+import { customElement } from 'functional-element';
 import './tic-tac-board';
 
-class TicTacToe extends HTMLElement {
-    constructor() {
-        super();
-
-        this.render();
-    }
-
-    render() {
-        render(html`
+customElement('tic-tac-toe', () => {
+    return {
+        template: html`
             <tic-tac-board></tic-tac-board>
-        `, this);
-    }
-}
-
-window.customElements.define('tic-tac-toe', TicTacToe);
+        `
+    };
+});

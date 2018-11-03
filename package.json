@@ -1,11 +1,10 @@
 {
   "name": "tic-tac-toe",
   "version": "0.0.0",
-  "description": "Tic tac toe, web component style",
-  "main": "elements/tic-tac-toe.js",
+  "description": "Tic tac toe, functional custom element style",
   "scripts": {
     "start": "zwitterion",
-    "build-static": "zwitterion --build-static --exclude node_modules"
+    "build": "zwitterion --build-static --exclude node_modules --include functional-element"
   },
   "repository": {
     "type": "git",
@@ -14,8 +13,11 @@
   "author": "Jordan Last <jordan.michael.last@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "lit-html": "^0.9.0",
-    "redux": "^4.0.0",
-    "zwitterion": "^0.27.0"
+    "functional-element": "0.0.6",
+    "redux": "4.0.0"
+  },
+  "devDependencies": {
+    "jsverify-es-module": "0.0.2",
+    "zwitterion": "0.27.3"
   }
 }

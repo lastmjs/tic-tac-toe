@@ -1,35 +1,18 @@
-import {html, render} from 'lit-html/lib/lit-extended.js';
-import {Store} from '../state/store';
+import { html } from 'lit-html';
+import { customElement } from 'functional-element';
+import { Store } from '../state/store';
 
-class TicTacSquare extends HTMLElement {
-    _fill: 'x' | 'o' | '';
-
-    constructor() {
-        super();
-
-        this.fill = '';
-
-        this.render();
+customElement('tic-tac-square', ({ constructing, props, element }) => {
+    if (constructing) {
+        return {
+            props: {
+                fill: ''
+            }
+        };
     }
 
-    get fill() {
-        return this._fill;
-    }
-
-    set fill(val) {
-        this._fill = val;
-        this.render();
-    }
-
-    squareClick() {
-        Store.dispatch({
-            type: 'SQUARE_CLICK',
-            grid: this.id
-        });
-    }
-
-    render() {
-        render(html`
+    return {
+        template: html`
             <style>
                 .square {
                     height: 100%;
@@ -46,10 +29,14 @@ class TicTacSquare extends HTMLElement {
                 }
             </style>
 
-            <div class="square" onclick="${() => this.squareClick()}">${this.fill}</div>
+            <div class="square" @click="${() => squareClick(element.id)}">${props.fill}</div>
+        `
+    };
+});
 
-        `, this);
-    }
+function squareClick(id: string) {
+    Store.dispatch({
+        type: 'SQUARE_CLICK',
+        grid: id
+    });
 }
-
-window.customElements.define('tic-tac-square', TicTacSquare);

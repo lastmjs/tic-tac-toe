@@ -1,21 +1,27 @@
-import {html, render} from 'lit-html/lib/lit-extended.js';
-import {Store} from '../state/store';
+import { html } from 'lit-html';
+import { customElement } from 'functional-element';
+import { Store } from '../state/store';
 import './tic-tac-square';
 
-class TicTacBoard extends HTMLElement {
-    constructor() {
-        super();
-
-        Store.subscribe(this.render.bind(this));
-        Store.dispatch({
-            type: 'DEFAULT_ACTION'
+customElement('tic-tac-board', ({ constructing, props, update }) => {
+    if (constructing) {
+        Store.subscribe(() => {
+            update({
+                props: {
+                    state: Store.getState()
+                }
+            });
         });
+
+        return {
+            props: {
+                state: Store.getState()
+            }
+        };
     }
 
-    render() {
-        const state = Store.getState();
-
-        render(html`
+    return {
+        template: html`
             <style>
                 .grid {
                     display: grid;
@@ -28,20 +34,18 @@ class TicTacBoard extends HTMLElement {
             </style>
 
             <div class="grid">
-                <tic-tac-square id="grid1" fill="${state.grid1}"></tic-tac-square>
-                <tic-tac-square id="grid2" fill="${state.grid2}"></tic-tac-square>
-                <tic-tac-square id="grid3" fill="${state.grid3}"></tic-tac-square>
+                <tic-tac-square id="grid1" .fill=${props.state.grid1}></tic-tac-square>
+                <tic-tac-square id="grid2" .fill=${props.state.grid2}></tic-tac-square>
+                <tic-tac-square id="grid3" .fill=${props.state.grid3}></tic-tac-square>
 
-                <tic-tac-square id="grid4" fill="${state.grid4}"></tic-tac-square>
-                <tic-tac-square id="grid5" fill="${state.grid5}"></tic-tac-square>
-                <tic-tac-square id="grid6" fill="${state.grid6}"></tic-tac-square>
+                <tic-tac-square id="grid4" .fill=${props.state.grid4}></tic-tac-square>
+                <tic-tac-square id="grid5" .fill=${props.state.grid5}></tic-tac-square>
+                <tic-tac-square id="grid6" .fill=${props.state.grid6}></tic-tac-square>
 
-                <tic-tac-square id="grid7" fill="${state.grid7}"></tic-tac-square>
-                <tic-tac-square id="grid8" fill="${state.grid8}"></tic-tac-square>
-                <tic-tac-square id="grid9" fill="${state.grid9}"></tic-tac-square>
+                <tic-tac-square id="grid7" .fill=${props.state.grid7}></tic-tac-square>
+                <tic-tac-square id="grid8" .fill=${props.state.grid8}></tic-tac-square>
+                <tic-tac-square id="grid9" .fill=${props.state.grid9}></tic-tac-square>
             </div>
-        `, this);
+        `
     }
-}
-
-window.customElements.define('tic-tac-board', TicTacBoard);
+});
