@@ -4,7 +4,7 @@
   "description": "Tic tac toe, functional custom element style",
   "scripts": {
     "start": "zwitterion",
-    "build": "zwitterion --build-static --exclude node_modules --include functional-element"
+    "build": "zwitterion --build-static --exclude node_modules --include functional-element,lit-html"
   },
   "repository": {
     "type": "git",
