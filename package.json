@@ -13,7 +13,7 @@
   "author": "Jordan Last <jordan.michael.last@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "functional-element": "0.0.13",
+    "functional-element": "0.0.14",
     "redux": "4.0.0"
   },
   "devDependencies": {
