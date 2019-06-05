@@ -1,7 +1,7 @@
 import { html, customElement } from 'functional-element';
 import { Store } from '../state/store';
 
-customElement('tic-tac-square', ({ constructing, props, element }) => {
+customElement('tic-tac-square', ({ constructing, element, fill }) => {
     if (constructing) {
         return {
             fill: ''
@@ -25,7 +25,7 @@ customElement('tic-tac-square', ({ constructing, props, element }) => {
             }
         </style>
 
-        <div class="square" @click="${() => squareClick(element.id)}">${props.fill}</div>
+        <div class="square" @click="${() => squareClick(element.id)}">${fill}</div>
     `;
 });
 
