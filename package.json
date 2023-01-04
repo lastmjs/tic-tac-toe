@@ -18,6 +18,6 @@
   },
   "devDependencies": {
     "jsverify-es-module": "0.0.2",
-    "zwitterion": "0.27.3"
+    "zwitterion": "0.47.0"
   }
 }
